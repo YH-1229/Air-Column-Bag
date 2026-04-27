@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="山尖科技包装公司 - 专业气柱袋及充气缓冲包装制造商，提供高品质气柱袋、气柱袋卷材、定制缓冲包装解决方案。">
+    <meta name="keywords" content="气柱袋,充气包装,缓冲包装,气柱袋厂家,air column bag,inflatable packaging,shanjian packaging,空气柱袋">
+    <title>山尖科技包装 | 专业气柱袋制造商 | 中英文双语站</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004b99;
+            --primary-light: #e6f2ff;
+            --accent: #ff6600;
+            --accent-light: #fff3e6;
+            --bg: #ffffff;
+            --bg-gray: #f7f9fc;
+            --bg-dark: #1a1f2e;
+            --text: #2c3e50;
+            --text-light: #5f6b7a;
+            --text-white: #ffffff;
+            --border: #dce1e8;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+            --header-height: 72px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.2s;
+        }
+        /* 语言切换控制：默认显示中文，body.lang-en 时显示英文 */
+        body .en {
+            display: none;
+        }
+        body.lang-en .zh {
+            display: none;
+        }
+        body.lang-en .en {
+            display: inline;
+        }
+
+        /* 头部导航 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+        }
+        .header.scrolled {
+            border-bottom-color: var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .nav-cta {
+            background: var(--primary) !important;
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 24px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+        }
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.4);
+            transform: translateY(-1px);
+        }
+        /* 语言切换按钮 */
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            margin-left: 12px;
+            align-items: center;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+        .lang-btn.active-lang {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        @media (max-width: 960px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                flex-direction: column;
+                background: white;
+                padding: 100px 30px 40px;
+                gap: 6px;
+                box-shadow: var(--shadow-lg);
+                transition: var(--transition);
+                align-items: stretch;
+            }
+            .nav-links.open {
+                right: 0;
+            }
+            .nav-links a {
+                padding: 12px 16px;
+                border-radius: 8px;
+            }
+            .lang-switch {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 999;
+            }
+            .mobile-overlay.show {
+                display: block;
+            }
+        }
+
+        /* Hero 区域 */
+        .hero {
+            margin-top: var(--header-height);
+            background: linear-gradient(160deg, #e6f2ff 0%, #f0f8ff 30%, #fafcfe 60%, #ffffff 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.25;
+            color: #1a1f2e;
+            margin-bottom: 16px;
+        }
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.35);
+        }
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        .hero-visual {
+            flex: 1;
+            min-width: 300px;
+        }
+        .hero-image-wrapper {
+            max-width: 480px;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section {
+            padding: 80px 24px;
+        }
+        .section-gray {
+            background: var(--bg-gray);
+        }
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.1rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #1a1f2e;
+        }
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1rem;
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section-header .section-desc {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .factory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .factory-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: var(--shadow-lg);
+        }
+        .factory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .factory-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .product-card-image {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #f0f4f9;
+        }
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-card-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 14px;
+        }
+        .product-card-body {
+            padding: 20px;
+        }
+        .product-card-body h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .product-card-body p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .inquiry-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .inquiry-info {
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+        }
+        .inquiry-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+            flex-shrink: 0;
+        }
+        .inquiry-form-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--bg-gray);
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 28px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
+            transition: var(--transition);
+        }
+        .footer {
+            background: var(--bg-dark);
+            color: #b0b8c4;
+            padding: 48px 24px 24px;
+        }
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 36px;
+        }
+        .footer-col h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        @media (max-width: 768px) {
+            .factory-grid,
+            .inquiry-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="lang-zh">
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 16H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1zM7 9h10v2H7V9zm0 4h6v2H7v-2z"/></svg>
+                </div>
+                <span class="zh">山尖科技包装</span><span class="en">Shanjian Tech Packaging</span>
+            </a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero" data-section="hero"><span class="zh">首页</span><span class="en">Home</span></a></li>
+                    <li><a href="#factory" data-section="factory"><span class="zh">工厂介绍</span><span class="en">Factory</span></a></li>
+                    <li><a href="#products" data-section="products"><span class="zh">产品中心</span><span class="en">Products</span></a></li>
+                    <li><a href="#why-us" data-section="why-us"><span class="zh">优势</span><span class="en">Why Us</span></a></li>
+                    <li><a href="#inquiry" class="nav-cta"><span class="zh">获取报价</span><span class="en">Get Quote</span></a></li>
+                    <li class="lang-switch">
+                        <button class="lang-btn active-lang" id="btnZh" aria-label="中文">中文</button>
+                        <button class="lang-btn" id="btnEn" aria-label="English">EN</button>
+                    </li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <span class="hero-badge"><span class="zh">🏭 源头工厂 · 15年行业经验</span><span class="en">🏭 Source Factory · 15 Years Experience</span></span>
+                <h1>
+                    <span class="zh">专业<span>气柱袋</span>包装材料制造商</span>
+                    <span class="en">Professional <span>Air Column Bag</span> Manufacturer</span>
+                </h1>
+                <p>
+                    <span class="zh">专注于充气缓冲包装解决方案，为电商物流、电子产品、精密仪器等行业提供高品质气柱袋。支持定制尺寸，快速打样，量大从优。</span>
+                    <span class="en">Specializing in inflatable cushion packaging solutions, providing high-quality air column bags for e-commerce, electronics, precision instruments and more. Custom sizes, fast sampling, competitive pricing.</span>
+                </p>
+                <div>
+                    <a href="#inquiry" class="btn btn-primary"><span class="zh">📋 立即询价</span><span class="en">📋 Request Quote</span></a>
+                    <a href="#products" class="btn btn-outline" style="margin-left:12px;"><span class="zh">查看产品 →</span><span class="en">Products →</span></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="https://placehold.co/600x600/e6f2ff/0066cc?text=Air+Column+Bag" alt="气柱袋产品展示">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="factory">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label"><span class="zh">工厂介绍</span><span class="en">Factory Introduction</span></span>
+                <h2 class="section-title"><span class="zh">工厂介绍</span><span class="en">Our Factory</span></h2>
+                <p class="section-desc"><span class="zh">集研发、生产、销售于一体的专业气柱袋制造商，先进设备，严格品控。</span><span class="en">A professional air column bag manufacturer integrating R&D, production and sales, with advanced equipment and strict quality control.</span></p>
+            </div>
+            <div class="factory-grid">
+                <div class="factory-image">
+                    <img src="https://placehold.co/800x600/d4dce6/5f6b7a?text=Factory+Workshop" alt="工厂车间">
+                </div>
+                <div>
+                    <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:12px;"><span class="zh">山尖科技包装有限公司</span><span class="en">Shanjian Tech Packaging Co., Ltd.</span></h3>
+                    <p style="color:var(--text-light);"><span class="zh">坐落于制造业名城东莞，拥有5000平方米标准化厂房，多条全自动气柱袋生产线，日产能达50万+只。我们坚持品质为本，从原料到成品严格遵循国际标准。</span><span class="en">Located in Dongguan, a famous manufacturing city, we have a 5,000㎡ standardized workshop, multiple fully automatic production lines, with a daily capacity of 500,000+ units. We adhere to quality first and follow international standards from raw materials to finished products.</span></p>
+                    <div class="factory-stats">
+                        <div class="stat-card"><div class="stat-number">15+</div><div class="stat-label"><span class="zh">年经验</span><span class="en">Years Exp.</span></div></div>
+                        <div class="stat-card"><div class="stat-number">5000㎡</div><div class="stat-label"><span class="zh">厂房面积</span><span class="en">Workshop</span></div></div>
+                        <div class="stat-card"><div class="stat-number">50万+</div><div class="stat-label"><span class="zh">日产能</span><span class="en">Daily Output</span></div></div>
+                        <div class="stat-card"><div class="stat-number">2000+</div><div class="stat-label"><span class="zh">合作客户</span><span class="en">Clients</span></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-gray" id="products">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label"><span class="zh">产品中心</span><span class="en">Our Products</span></span>
+                <h2 class="section-title"><span class="zh">产品中心</span><span class="en">Products</span></h2>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <section class="section" id="why-us">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label"><span class="zh">为什么选择我们</span><span class="en">Why Choose Us</span></span>
+                <h2 class="section-title"><span class="zh">我们的优势</span><span class="en">Our Advantages</span></h2>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:20px;">
+                <div class="stat-card"><div style="font-size:2rem;">⭐</div><h4><span class="zh">品质保障</span><span class="en">Quality</span></h4><p><span class="zh">ISO认证，全新原料</span><span class="en">ISO certified, virgin materials</span></p></div>
+                <div class="stat-card"><div style="font-size:2rem;">⚡</div><h4><span class="zh">快速响应</span><span class="en">Fast Response</span></h4><p><span class="zh">24h内报价，3天打样</span><span class="en">Quote in 24h, sample in 3 days</span></p></div>
+                <div class="stat-card"><div style="font-size:2rem;">💰</div><h4><span class="zh">价格优势</span><span class="en">Competitive Price</span></h4><p><span class="zh">源头工厂直销，量大从优</span><span class="en">Factory direct, bulk discount</span></p></div>
+                <div class="stat-card"><div style="font-size:2rem;">🎨</div><h4><span class="zh">定制服务</span><span class="en">Customization</span></h4><p><span class="zh">尺寸、印刷、颜色均可定制</span><span class="en">Size, print, color customized</span></p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-gray" id="inquiry">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label"><span class="zh">在线询价</span><span class="en">Get A Quote</span></span>
+                <h2 class="section-title"><span class="zh">在线询价 / 索取样品</span><span class="en">Inquiry / Sample Request</span></h2>
+            </div>
+            <div class="inquiry-wrapper">
+                <div class="inquiry-info">
+                    <h3><span class="zh">联系我们</span><span class="en">Contact Us</span></h3>
+                    <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg> +86 13925515142</div>
+                    <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> shanjian688@163.com</div>
+                    <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> <span class="zh">东莞市常平镇苏坑村工业园一路</span><span class="en">Industrial Park 1st Road, Sukeng Village, Changping, Dongguan</span></div>
+                </div>
+                <div class="inquiry-form-card">
+                    <h3><span class="zh">客户信息登记</span><span class="en">Customer Information</span></h3>
+                    <form id="inquiryForm">
+                        <div class="form-row">
+                            <div class="form-group"><label><span class="zh">公司名称</span><span class="en">Company</span> *</label><input type="text" name="company" required data-i18n-placeholder="请输入公司名称|Company name"></div>
+                            <div class="form-group"><label><span class="zh">联系人</span><span class="en">Contact Name</span> *</label><input type="text" name="contactName" required data-i18n-placeholder="您的姓名|Your name"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label><span class="zh">手机</span><span class="en">Phone</span> *</label><input type="tel" name="phone" required data-i18n-placeholder="手机号码|Phone number"></div>
+                            <div class="form-group"><label><span class="zh">邮箱</span><span class="en">Email</span> *</label><input type="email" name="email" required data-i18n-placeholder="邮箱地址|Email address"></div>
+                        </div>
+                        <div class="form-group"><label><span class="zh">产品类型</span><span class="en">Product Type</span></label><select name="productType"><option value=""><span class="zh">请选择</span><span class="en">Select</span></option><option value="标准气柱袋"><span class="zh">标准气柱袋</span><span class="en">Standard Air Column Bag</span></option><option value="气柱袋卷材"><span class="zh">气柱袋卷材</span><span class="en">Air Column Roll</span></option><option value="定制气柱包装"><span class="zh">定制气柱包装</span><span class="en">Custom Air Column Packaging</span></option></select></div>
+                        <div class="form-group"><label><span class="zh">需求描述</span><span class="en">Message</span></label><textarea name="message" data-i18n-placeholder="请描述您的需求...|Describe your needs..."></textarea></div>
+                        <button type="submit" class="btn-submit"><span class="zh">提交询价</span><span class="en">Submit Inquiry</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-col"><h4>山尖科技包装</h4><p><span class="zh">专业气柱袋制造商，源头工厂，品质保证。</span><span class="en">Professional air column bag manufacturer, factory direct, quality assured.</span></p></div>
+            <div class="footer-col"><h4><span class="zh">快速导航</span><span class="en">Quick Links</span></h4><a href="#hero"><span class="zh">首页</span><span class="en">Home</span></a><a href="#factory"><span class="zh">工厂</span><span class="en">Factory</span></a><a href="#products"><span class="zh">产品</span><span class="en">Products</span></a></div>
+            <div class="footer-col"><h4><span class="zh">联系方式</span><span class="en">Contact</span></h4><p>📞 +86 13925515142</p><p>📧 shanjian688@163.com</p><p>📍 <span class="zh">东莞市常平镇苏坑村工业园一路</span><span class="en">Dongguan, China</span></p></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 山尖科技包装有限公司</div>
+    </footer>
+    <button class="scroll-top" id="scrollTopBtn">↑</button>
+
+    <script>
+        (function() {
+            // 语言切换逻辑
+            const body = document.body;
+            const btnZh = document.getElementById('btnZh');
+            const btnEn = document.getElementById('btnEn');
+
+            function setLang(lang) {
+                if (lang === 'en') {
+                    body.classList.add('lang-en');
+                    body.classList.remove('lang-zh');
+                    btnEn.classList.add('active-lang');
+                    btnZh.classList.remove('active-lang');
+                    localStorage.setItem('lang', 'en');
+                } else {
+                    body.classList.remove('lang-en');
+                    body.classList.add('lang-zh');
+                    btnZh.classList.add('active-lang');
+                    btnEn.classList.remove('active-lang');
+                    localStorage.setItem('lang', 'zh');
+                }
+                updatePlaceholders();
+            }
+
+            function updatePlaceholders() {
+                const isEn = body.classList.contains('lang-en');
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const parts = el.getAttribute('data-i18n-placeholder').split('|');
+                    el.placeholder = isEn ? (parts[1] || '') : (parts[0] || '');
+                });
+                // 更新select中的option文本（因为option内部不能有span）
+                const productSelect = document.querySelector('select[name="productType"]');
+                if (productSelect) {
+                    const options = productSelect.options;
+                    const zhTexts = ['请选择', '标准气柱袋', '气柱袋卷材', '定制气柱包装'];
+                    const enTexts = ['Select', 'Standard Air Column Bag', 'Air Column Roll', 'Custom Air Column Packaging'];
+                    for (let i = 0; i < options.length; i++) {
+                        options[i].textContent = isEn ? enTexts[i] : zhTexts[i];
+                    }
+                }
+            }
+
+            btnZh.addEventListener('click', () => setLang('zh'));
+            btnEn.addEventListener('click', () => setLang('en'));
+
+            // 初始化语言从localStorage或默认中文
+            const savedLang = localStorage.getItem('lang') || 'zh';
+            setLang(savedLang);
+
+            // 移动端菜单
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const overlay = document.getElementById('mobileOverlay');
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                overlay.classList.toggle('show');
+            });
+            overlay.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                overlay.classList.remove('show');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    overlay.classList.remove('show');
+                });
+            });
+
+            // 滚动效果
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                const scrollBtn = document.getElementById('scrollTopBtn');
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                if (window.scrollY > 600) scrollBtn.classList.add('visible');
+                else scrollBtn.classList.remove('visible');
+            });
+            document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // 动态产品数据（双语）
+            const products = [
+                { img: 'https://placehold.co/500x500/f0f4f9/0066cc?text=标准气柱袋', tagZh: '热销', tagEn: 'Hot', titleZh: '标准气柱袋', titleEn: 'Standard Air Column Bag', descZh: '通用型充气缓冲包装，适用于电子产品、化妆品等易碎品防护。', descEn: 'Universal inflatable cushion packaging for electronics, cosmetics, etc.' },
+                { img: 'https://placehold.co/500x500/f5f0eb/ff6600?text=气柱卷材', tagZh: '新品', tagEn: 'New', titleZh: '气柱袋卷材', titleEn: 'Air Column Roll', descZh: '未充气卷材，节省仓储空间，现场充气灵活高效。', descEn: 'Uninflated roll, saves storage space, inflate on-site.' },
+                { img: 'https://placehold.co/500x500/eaf4e8/2e7d32?text=定制包装', tagZh: '', tagEn: '', titleZh: '定制气柱包装', titleEn: 'Custom Air Column Packaging', descZh: '根据产品外形定制，精准贴合，免费设计。', descEn: 'Tailored to product shape, precise fit, free design.' },
+                { img: 'https://placehold.co/500x500/fdf2f0/e53935?text=防静电气柱袋', tagZh: '', tagEn: '', titleZh: '防静电气柱袋', titleEn: 'Anti-static Air Column Bag', descZh: '专为电子元器件设计，防静电+缓冲双重保护。', descEn: 'For electronic components, anti-static and cushioning.' }
+            ];
+
+            const productsGrid = document.getElementById('productsGrid');
+            function renderProducts() {
+                const isEn = body.classList.contains('lang-en');
+                productsGrid.innerHTML = products.map(p => `
+                    <div class="product-card" onclick="document.getElementById('inquiry').scrollIntoView({behavior:'smooth'})">
+                        <div class="product-card-image">
+                            ${(isEn ? p.tagEn : p.tagZh) ? `<span class="product-card-tag">${isEn ? p.tagEn : p.tagZh}</span>` : ''}
+                            <img src="${p.img}" alt="${isEn ? p.titleEn : p.titleZh}" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>${isEn ? p.titleEn : p.titleZh}</h3>
+                            <p>${isEn ? p.descEn : p.descZh}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            renderProducts();
+            // 语言切换时重新渲染产品卡片
+            window.addEventListener('langchange', renderProducts);
+            const originalSetLang = setLang;
+            setLang = function(lang) {
+                originalSetLang(lang);
+                window.dispatchEvent(new Event('langchange'));
+            };
+
+            // 表单提交模拟
+            document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+                if (!data.get('company') || !data.get('contactName') || !data.get('phone') || !data.get('email')) {
+                    alert(body.classList.contains('lang-en') ? 'Please fill all required fields.' : '请填写所有必填字段。');
+                    return;
+                }
+                alert(body.classList.contains('lang-en') ? 'Thank you! We will contact you within 24 hours.' : '感谢您的询价，我们将在24小时内与您联系！');
+                form.reset();
+            });
+
+            updatePlaceholders();
+        })();
+    </script>
+</body>
+</html>
